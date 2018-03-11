@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="DYZ，Redspite,web前端，web前端简历，个人博客">
+    <meta name="description" content="WEB前端工程师——RedSpite的自学之路，个人博客知识笔记与心得记录">
+    <meta name="author" content="代远诏,DYZ">
+    <title>RedSpite » 移动端自适应banner轮播 手写</title>
+
+    <link rel="stylesheet" href="../articleSorce/mBanner/bootstrap.css">
+    <link rel="stylesheet" href="../articleSorce/mBanner/syntaxy.css">
+    <link rel="stylesheet" href="../articleSorce/mBanner/base.css" type="text/css">
+    <link rel="stylesheet" href="../articleSorce/mBanner/style.css" type="text/css">
+
+<script src="../articleSorce/mBanner/push.js"></script><script src="../articleSorce/mBanner/hm.js"></script><script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "//hm.baidu.com/hm.js?f87e415f9d1f6111b1d34c5f96927d9b";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+ <!--[if lte IE 9]>   <script type="text/javascript">      window.location = "http://www.xiaoyuezhang.com/error.html"  </script><![endif]--></head>
+<body>
+<div class="content">
+    <div class=" container">
+        <div id="top">
+            <img src="../articleSorce/mBanner/top.png" alt="回到顶部">
+        </div>
+        <div class="header-box fadein">
+            <img src="../images/myPhoto.jpg" alt="我的头像">
+        </div>
+        <div class="center">
+            <p class="myid">DYZ</p>
+        </div>
+        <div class="my-sort center">
+            <a href="../index.html">主页</a>
+            <a href="../techBlog.html">列表</a>
+            <a href="../messageBoard.html">留言</a>
+        </div>
+        <div id="artical-detail">
+            <h4>移动端自适应banner轮播 手写</h4>
+            <p>随着移动设备普及率越来越高，我们前端工程师现在必须掌握h5页面的书写了。
+                手机端展示方式不需要太复杂，毕竟屏幕只有这么大嘛不是，所以能搞得花样也不多，运用最多的就是轮播了吧！<br><br></p>
+            <p>我喜欢手写常用的前端功能，所以这次也试着自己摸索写一下吧~~<br><br></p>
+            <p>首先是需要了解的几位重要人物:<br><br></p>
+            <p><strong>* touches</strong><br><br></p>
+            <p>触摸点是有多个的，每个Touch对象包含的属性如下。<br><br></p>
+            <p>clientX：触摸目标在视口中的x坐标。<br><br></p>
+            <p>clientY：触摸目标在视口中的y坐标。<br><br></p>
+            <p>identifier：标识触摸的唯一ID。<br><br></p>
+            <p>pageX：触摸目标在页面中的x坐标。<br><br></p>
+            <p>pageY：触摸目标在页面中的y坐标。<br><br></p>
+            <p>screenX：触摸目标在屏幕中的x坐标。<br><br></p>
+            <p>screenY：触摸目标在屏幕中的y坐标。<br><br></p>
+            <p>target：触目的DOM节点目标。<br><br></p>
+            <p><strong>* touchstart</strong><br><br></p>
+            <p>touchstart 是手指触摸到屏幕一瞬间触发的事件，可以在这里记录手指在屏幕上的初始位置<br><br></p>
+            <div class="code">
+                <pre class="codebox" data-type="blank" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>5 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">var startX, startY, endX, endY;</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">$("#bannerm").on("touchstart",function(e){</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">        //开始位置</div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">        startX = e.originalEvent.targetTouches[0].clientX;</div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">});</div></div></div></div></pre>
+            </div>
+            <p><strong>* touchmove</strong><br><br></p>
+            <p>touchmove 是手指在页面进行拖拽时触发的事件，可以在这里记录手指在屏幕的最后位置。
+                在这个事件发生期间，调用preventDefault()事件可以阻止滚动。<br><br></p>
+            <div class="code">
+                <pre class="codebox" data-type="blank" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>5 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">$("#mbanner").on("touchmove", function (e) {</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">        e.preventDefault();</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">        //结束位置</div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">        endX = e.originalEvent.targetTouches[0].clientX;</div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">});</div></div></div></div></pre>
+            </div>
+            <p><strong>* touchend</strong><br><br></p>
+            <p>touchend 是手指离开屏幕触发的事件，在这个事件发生期间，调用preventDefault()事件可以阻止滚动。<br><br></p>
+            <div class="code">
+                <pre class="codebox" data-type="blank" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>9 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">$("#mbanner").on("touchend", function (e) {</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">       e.preventDefault();</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">       if ((startX - endX) &gt; 100) {</div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">           //判断滑动方向，初始 &gt; 结束 向右</div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">       }</div></div><div class="stx-line-wrap stx-darker" data-line="6"><div class="stx-line-code stx-nowrap">       else if ((startX - endX) &lt; -100){</div></div><div class="stx-line-wrap stx-lighter" data-line="7"><div class="stx-line-code stx-nowrap">           //初始 &lt; 结束 向左</div></div><div class="stx-line-wrap stx-darker" data-line="8"><div class="stx-line-code stx-nowrap">       }</div></div><div class="stx-line-wrap stx-lighter" data-line="9"><div class="stx-line-code stx-nowrap">});</div></div></div></div></pre>
+            </div>
+            <p><strong>现在来写一写轮播</strong> (移动端查看) <br><br></p>
+            <div id="bannerm">
+                <ul>
+                    <li class="active">
+                        <img src="../articleSorce/mBanner/ban1.jpg" alt="banner1">
+                    </li>
+                    <li>
+                        <img src="../articleSorce/mBanner/ban2.jpg" alt="banner2">
+                    </li>
+                    <li>
+                        <img src="../articleSorce/mBanner/ban3.jpg" alt="banner3">
+                    </li>
+                    <li>
+                        <img src="../articleSorce/mBanner/ban1.jpg" alt="banner1">
+                    </li>
+                </ul>
+            </div>
+            <strong class="center" id="numberI">1</strong>
+            <h5>Html:</h5>
+            <div class="code">
+                <pre class="codebox" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>11 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">&lt;ul id="mbanner"&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">    &lt;li&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">        &lt;img src="/image/ban1.jpg" alt="banner1"&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">    &lt;/li&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">    &lt;li&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="6"><div class="stx-line-code stx-nowrap">        &lt;img src="/image/ban2.jpg" alt="banner2"&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="7"><div class="stx-line-code stx-nowrap">    &lt;/li&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="8"><div class="stx-line-code stx-nowrap">    &lt;li&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="9"><div class="stx-line-code stx-nowrap">        &lt;img src="/image/ban3.jpg" alt="banner3"&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="10"><div class="stx-line-code stx-nowrap">    &lt;/li&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="11"><div class="stx-line-code stx-nowrap">&lt;/ul&gt;</div></div></div></div></pre>
+            </div>
+            <h5>Css:</h5>
+            <div class="code">
+                <pre class="codebox" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>22 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">#mbanner{</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">    width: 100%;</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">    margin: 0 auto;</div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">    position: relative;</div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">    min-height: 100px;</div></div><div class="stx-line-wrap stx-darker" data-line="6"><div class="stx-line-code stx-nowrap">    overflow: hidden;</div></div><div class="stx-line-wrap stx-lighter" data-line="7"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-darker" data-line="8"><div class="stx-line-code stx-nowrap">#mbanner ul{</div></div><div class="stx-line-wrap stx-lighter" data-line="9"><div class="stx-line-code stx-nowrap">    width: 400%;</div></div><div class="stx-line-wrap stx-darker" data-line="10"><div class="stx-line-code stx-nowrap">    height: 100%;</div></div><div class="stx-line-wrap stx-lighter" data-line="11"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-darker" data-line="12"><div class="stx-line-code stx-nowrap">#mbanner li{</div></div><div class="stx-line-wrap stx-lighter" data-line="13"><div class="stx-line-code stx-nowrap">    position: relative;</div></div><div class="stx-line-wrap stx-darker" data-line="14"><div class="stx-line-code stx-nowrap">    width: 25%;</div></div><div class="stx-line-wrap stx-lighter" data-line="15"><div class="stx-line-code stx-nowrap">    height: 0;</div></div><div class="stx-line-wrap stx-darker" data-line="16"><div class="stx-line-code stx-nowrap">    padding-bottom: 7.5%;</div></div><div class="stx-line-wrap stx-lighter" data-line="17"><div class="stx-line-code stx-nowrap">    overflow: hidden;</div></div><div class="stx-line-wrap stx-darker" data-line="18"><div class="stx-line-code stx-nowrap">    float: left;</div></div><div class="stx-line-wrap stx-lighter" data-line="19"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-darker" data-line="20"><div class="stx-line-code stx-nowrap">#mbanner li img{</div></div><div class="stx-line-wrap stx-lighter" data-line="21"><div class="stx-line-code stx-nowrap">    width: 100%;</div></div><div class="stx-line-wrap stx-darker" data-line="22"><div class="stx-line-code stx-nowrap">}</div></div></div></div></pre>
+            </div>
+            <h5>Js:</h5>
+            <div class="code">
+                <pre class="codebox" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>54 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">$(function () {</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">    var startX, startY, endX, endY;</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">    var size = $("#bannerm li").size();</div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">    $("#bannerm").on("touchstart",function(e){</div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">        startX = e.originalEvent.targetTouches[0].clientX;</div></div><div class="stx-line-wrap stx-darker" data-line="6"><div class="stx-line-code stx-nowrap">        clearInterval(t);                                             //清除定时轮播</div></div><div class="stx-line-wrap stx-lighter" data-line="7"><div class="stx-line-code stx-nowrap">    });</div></div><div class="stx-line-wrap stx-darker" data-line="8"><div class="stx-line-code stx-nowrap">&nbsp;</div></div><div class="stx-line-wrap stx-lighter" data-line="9"><div class="stx-line-code stx-nowrap">    $("#bannerm").on("touchmove", function (e) {</div></div><div class="stx-line-wrap stx-darker" data-line="10"><div class="stx-line-code stx-nowrap">        e.preventDefault();</div></div><div class="stx-line-wrap stx-lighter" data-line="11"><div class="stx-line-code stx-nowrap">        endX = e.originalEvent.targetTouches[0].clientX;</div></div><div class="stx-line-wrap stx-darker" data-line="12"><div class="stx-line-code stx-nowrap">    });</div></div><div class="stx-line-wrap stx-lighter" data-line="13"><div class="stx-line-code stx-nowrap">    var i, _left;</div></div><div class="stx-line-wrap stx-darker" data-line="14"><div class="stx-line-code stx-nowrap">    var t = setInterval(move, 4000);</div></div><div class="stx-line-wrap stx-lighter" data-line="15"><div class="stx-line-code stx-nowrap">    $("#bannerm").on("touchend", function (e) {</div></div><div class="stx-line-wrap stx-darker" data-line="16"><div class="stx-line-code stx-nowrap">        e.preventDefault();</div></div><div class="stx-line-wrap stx-lighter" data-line="17"><div class="stx-line-code stx-nowrap">        if ((startX - endX) &gt; 100) {</div></div><div class="stx-line-wrap stx-darker" data-line="18"><div class="stx-line-code stx-nowrap">            move()</div></div><div class="stx-line-wrap stx-lighter" data-line="19"><div class="stx-line-code stx-nowrap">        }</div></div><div class="stx-line-wrap stx-darker" data-line="20"><div class="stx-line-code stx-nowrap">        else if ((startX - endX) &lt; -100){</div></div><div class="stx-line-wrap stx-lighter" data-line="21"><div class="stx-line-code stx-nowrap">            //初始 &lt; 结束 左滑</div></div><div class="stx-line-wrap stx-darker" data-line="22"><div class="stx-line-code stx-nowrap">            i  = $("#bannerm li.active").index();</div></div><div class="stx-line-wrap stx-lighter" data-line="23"><div class="stx-line-code stx-nowrap">            i--;</div></div><div class="stx-line-wrap stx-darker" data-line="24"><div class="stx-line-code stx-nowrap">            if(i&lt;0){</div></div><div class="stx-line-wrap stx-lighter" data-line="25"><div class="stx-line-code stx-nowrap">                var lefts = -100*(size-1) +"%";</div></div><div class="stx-line-wrap stx-darker" data-line="26"><div class="stx-line-code stx-nowrap">                $("#bannerm ul").css("margin-left", lefts);             //无缝轮播</div></div><div class="stx-line-wrap stx-lighter" data-line="27"><div class="stx-line-code stx-nowrap">                i = size -2;</div></div><div class="stx-line-wrap stx-darker" data-line="28"><div class="stx-line-code stx-nowrap">                show()</div></div><div class="stx-line-wrap stx-lighter" data-line="29"><div class="stx-line-code stx-nowrap">            }else {</div></div><div class="stx-line-wrap stx-darker" data-line="30"><div class="stx-line-code stx-nowrap">                show()</div></div><div class="stx-line-wrap stx-lighter" data-line="31"><div class="stx-line-code stx-nowrap">            }</div></div><div class="stx-line-wrap stx-darker" data-line="32"><div class="stx-line-code stx-nowrap">        }</div></div><div class="stx-line-wrap stx-lighter" data-line="33"><div class="stx-line-code stx-nowrap">        t = setInterval(move, 4000);                                    //定时轮播启动</div></div><div class="stx-line-wrap stx-darker" data-line="34"><div class="stx-line-code stx-nowrap">    });</div></div><div class="stx-line-wrap stx-lighter" data-line="35"><div class="stx-line-code stx-nowrap">    function move(){</div></div><div class="stx-line-wrap stx-darker" data-line="36"><div class="stx-line-code stx-nowrap">        //判断滑动方向，初始 &gt; 结束 右滑</div></div><div class="stx-line-wrap stx-lighter" data-line="37"><div class="stx-line-code stx-nowrap">        i = $("#bannerm li.active").index();</div></div><div class="stx-line-wrap stx-darker" data-line="38"><div class="stx-line-code stx-nowrap">        i++;</div></div><div class="stx-line-wrap stx-lighter" data-line="39"><div class="stx-line-code stx-nowrap">        if(i == size){</div></div><div class="stx-line-wrap stx-darker" data-line="40"><div class="stx-line-code stx-nowrap">            $("#bannerm ul").css("margin-left", "0");                  //无缝轮播</div></div><div class="stx-line-wrap stx-lighter" data-line="41"><div class="stx-line-code stx-nowrap">            i = 1;</div></div><div class="stx-line-wrap stx-darker" data-line="42"><div class="stx-line-code stx-nowrap">            show();</div></div><div class="stx-line-wrap stx-lighter" data-line="43"><div class="stx-line-code stx-nowrap">        }else{</div></div><div class="stx-line-wrap stx-darker" data-line="44"><div class="stx-line-code stx-nowrap">            show()</div></div><div class="stx-line-wrap stx-lighter" data-line="45"><div class="stx-line-code stx-nowrap">        }</div></div><div class="stx-line-wrap stx-darker" data-line="46"><div class="stx-line-code stx-nowrap">    }</div></div><div class="stx-line-wrap stx-lighter" data-line="47"><div class="stx-line-code stx-nowrap">    function show(){</div></div><div class="stx-line-wrap stx-darker" data-line="48"><div class="stx-line-code stx-nowrap">        _left = -100*i +"%";</div></div><div class="stx-line-wrap stx-lighter" data-line="49"><div class="stx-line-code stx-nowrap">        $("#bannerm li").eq(i).addClass("active").siblings().removeClass("active");</div></div><div class="stx-line-wrap stx-darker" data-line="50"><div class="stx-line-code stx-nowrap">        $("#bannerm ul").animate({</div></div><div class="stx-line-wrap stx-lighter" data-line="51"><div class="stx-line-code stx-nowrap">            "margin-left":_left</div></div><div class="stx-line-wrap stx-darker" data-line="52"><div class="stx-line-code stx-nowrap">        },500);</div></div><div class="stx-line-wrap stx-lighter" data-line="53"><div class="stx-line-code stx-nowrap">    }</div></div><div class="stx-line-wrap stx-darker" data-line="54"><div class="stx-line-code stx-nowrap">});</div></div></div></div></pre>
+            </div>
+        </div>
+        <p>这样就完成了一个移动端自适应的轮播了，可滑动可自动轮播，而且是无缝的~ 我的代码可能还不够简洁，慢慢进步吧！</p>
+        <p>更新于2017.01.27</p>
+
+    </div>
+</div>
+<script src="../articleSorce/mBanner/jquery-1.js"></script>
+<script src="../articleSorce/mBanner/syntaxy.js"></script>
+<script src="../articleSorce/mBanner/myjs.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".header-box").addClass("fadein");
+        $("#artical-detail p").append("<br/><br/>");
+
+    });
+
+    $(function () {
+        var startX, startY, endX, endY;
+        var size = $("#bannerm li").size();
+        $("#bannerm").on("touchstart", function(e) {
+            startX = e.originalEvent.targetTouches[0].clientX;
+            clearInterval(t);                                           //清除定时轮播
+        });
+
+        $("#bannerm").on("touchmove", function (e) {
+            e.preventDefault();
+            endX = e.originalEvent.targetTouches[0].clientX;
+        });
+        var i, _left, numberI;
+        var t = setInterval(move, 4000);
+        $("#bannerm").on("touchend", function (e) {
+            e.preventDefault();
+            if ((startX - endX) > 100) {
+                move()
+            }
+            else if ((startX - endX) < -100){
+                //初始 < 结束 左滑
+                i  = $("#bannerm li.active").index();
+                i--;
+                numberI = i;
+                if(i<0){
+                    var lefts = -100*(size-1) +"%";
+                    $("#bannerm ul").css("margin-left", lefts);             //无缝轮播
+                    i = size -2;
+                    numberI = i;
+                    show()
+                }else {
+                    show()
+                }
+            }
+            t = setInterval(move, 4000);                                    //定时轮播启动
+        });
+        function move(){
+            //判断滑动方向，初始 > 结束 右滑
+            i = $("#bannerm li.active").index();
+            i++;
+            numberI = i;
+            if(i == size){
+                $("#bannerm ul").css("margin-left", "0");               //无缝轮播
+                i = 1;
+                numberI = i;
+                show();
+            }else{
+                show()
+            }
+
+        }
+        function show(){
+            _left = -100*i +"%";
+            if(i==size-1){
+                numberI=0;
+            }
+            $("#bannerm li").eq(i).addClass("active").siblings().removeClass("active");
+            $("#bannerm ul").animate({
+                "margin-left":_left
+            },500);
+            $("#numberI").text(numberI+1);
+        }
+    });
+</script>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+</body></html>

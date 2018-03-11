@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="DYZ,Redspite,google地图,drawingManager">
+    <meta name="description" content=" 文章详情">
+    <meta name="author" content="代远诏,DYZ">
+    <title>RedSpite » 谷歌地图初触电</title>
+
+    <link rel="stylesheet" href="../articleSorce/googleMap/bootstrap.css">
+    <link rel="stylesheet" href="../articleSorce/googleMap/syntaxy.css">
+    <link rel="stylesheet" href="../articleSorce/googleMap/base.css" type="text/css">
+    <link rel="stylesheet" href="../articleSorce/googleMap/style.css" type="text/css">
+<!-- xiaoyuezhang.com Baidu tongji analytics -->
+<script src="../articleSorce/googleMap/hm.js"></script><script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "//hm.baidu.com/hm.js?f87e415f9d1f6111b1d34c5f96927d9b";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+ <!--[if lte IE 9]>   <script type="text/javascript">      window.location = "http://www.xiaoyuezhang.com/error.html"  </script><![endif]--></head>
+<body>
+<div class="content">
+    <div class=" container">
+        <div id="top">
+            <img src="../articleSorce/googleMap/top.png" alt="回到顶部">
+        </div>
+        <div class="header-box fadein">
+            <img src="../images/myPhoto.jpg" alt="我的头像">
+        </div>
+        <div class="center">
+            <p class="myid">DYZ</p>
+        </div>
+        <div class="my-sort center">
+            <a href="../index.html">主页</a>
+            <a href="../techBlog.html">列表</a>
+            <a href="../messageBoard.html">留言</a>
+        </div>
+        <div id="artical-detail">
+            <h4>谷歌地图初触电</h4>
+            <p>
+                最近的项目里面用到了谷歌地图，以前开发过百度地图，但是都涉足很浅很浅，虽然这次也只用到了<span class="cspan">drawingManager</span>下面几个画图组件。
+                氮素！第一次写了几百行的代码实现出了功能，这样充实的学习过程很令人满足讷。
+            <br><br></p>
+            <p>
+                这次把遇到的几个难点写下来，以后也能温故知新。
+            <br><br></p>
+            <p><strong>marker 与 infoWindow</strong><br><br></p>
+            <p>首先定义一个地图<br><br></p>
+            <div class="code">
+                <pre class="codebox" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>6 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">var point = {"lat": 20,"lng": 102};</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">map = new google.maps.Map(document.getElementById('map-canvas'), {</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">    zoom: 7,                                    //缩放级别</div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">    center: point,                              //中心点                  </div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">    mapTypeId: google.maps.MapTypeId.ROADMAP    //地图类型</div></div><div class="stx-line-wrap stx-darker" data-line="6"><div class="stx-line-code stx-nowrap">});</div></div></div></div></pre>
+            </div>
+            <p>创建一个markder标记<br><br></p>
+            <div class="code">
+                <pre class="codebox" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>7 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">var myLatlng = new google.maps.LatLng(data.lat, data.lng);  //定义一个marker的经纬度坐标</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">&nbsp;</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">var marker = new google.maps.Marker({                       //创建marker </div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">    position: myLatlng,  </div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">    map: map</div></div><div class="stx-line-wrap stx-darker" data-line="6"><div class="stx-line-code stx-nowrap">});  </div></div><div class="stx-line-wrap stx-lighter" data-line="7"><div class="stx-line-code stx-nowrap">marker.setMap(map);</div></div></div></div></pre>
+            </div>
+            <p>给这个marker加一个点击出现的infoWindow<br><br></p>
+            <div class="code">
+                <pre class="codebox" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>5 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">google.maps.event.addListener(marker, "click", function (e) {  </div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">    var html= '这是一个infoWindow';</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">    infoWindow.setContent(_html);  </div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">    infoWindow.open(map, marker); </div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">});</div></div></div></div></pre>
+            </div>
+            <p><strong>第一个难点：多个marker分别对应不同内容的infoWindow怎么写呢？</strong><br><br></p>
+            <p>答案是如下，假设有给一个markers数组，里面包含了每个marker的经纬度以及它对应的信息。这里用到了一个自运行函数。<br><br></p>
+            <div class="code">
+                <pre class="codebox" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>19 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">for (var i in markers) {  </div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">    //data是当前marker的信息对象</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">    var data = markers[i];                                                            </div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">    var myLatlng = new google.maps.LatLng(data.lat, data.lng);  </div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">    var marker = new google.maps.Marker({  </div></div><div class="stx-line-wrap stx-darker" data-line="6"><div class="stx-line-code stx-nowrap">        position: myLatlng,  </div></div><div class="stx-line-wrap stx-lighter" data-line="7"><div class="stx-line-code stx-nowrap">        map: map</div></div><div class="stx-line-wrap stx-darker" data-line="8"><div class="stx-line-code stx-nowrap">    });  </div></div><div class="stx-line-wrap stx-lighter" data-line="9"><div class="stx-line-code stx-nowrap">    marker.setMap(map);</div></div><div class="stx-line-wrap stx-darker" data-line="10"><div class="stx-line-code stx-nowrap">&nbsp;</div></div><div class="stx-line-wrap stx-lighter" data-line="11"><div class="stx-line-code stx-nowrap">    //marker添加点击事件  </div></div><div class="stx-line-wrap stx-darker" data-line="12"><div class="stx-line-code stx-nowrap">    (function (marker, data) {  </div></div><div class="stx-line-wrap stx-lighter" data-line="13"><div class="stx-line-code stx-nowrap">        google.maps.event.addListener(marker, "click", function (e) {  </div></div><div class="stx-line-wrap stx-darker" data-line="14"><div class="stx-line-code stx-nowrap">            var _html = '&lt;div&gt;'+ data.address +" "+ data.time  +" "+ data.msg +'&lt;/div&gt;';</div></div><div class="stx-line-wrap stx-lighter" data-line="15"><div class="stx-line-code stx-nowrap">            infoWindow.setContent(_html);  </div></div><div class="stx-line-wrap stx-darker" data-line="16"><div class="stx-line-code stx-nowrap">            infoWindow.open(map, marker); </div></div><div class="stx-line-wrap stx-lighter" data-line="17"><div class="stx-line-code stx-nowrap">        }); </div></div><div class="stx-line-wrap stx-darker" data-line="18"><div class="stx-line-code stx-nowrap">    })(marker, data);  </div></div><div class="stx-line-wrap stx-lighter" data-line="19"><div class="stx-line-code stx-nowrap">}</div></div></div></div></pre>
+            </div>
+            <p><strong>第二个难点：怎样获得当前overlay的各种坐标呢？</strong><br><br></p>
+            <p>答案是需要对overlay监听，<span class="cspan">drawingManager</span>提供了几个与marker,circle,polygon...等相对应的完成事件监听。
+                其中<span class="cspan">overlaycomplete</span>可监听所有类型的完成事件。
+            <br><br></p>
+            <div class="code">
+                <pre class="codebox" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>10 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">function setOverlay(obj){</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">    //obj可得到当前操作对象</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">    var obj = obj.overlay;      //obj是需要操作的对象</div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">    var type = obj.type;        //type可获取当前操作对象的类型</div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">&nbsp;</div></div><div class="stx-line-wrap stx-darker" data-line="6"><div class="stx-line-code stx-nowrap">    //对marker来说</div></div><div class="stx-line-wrap stx-lighter" data-line="7"><div class="stx-line-code stx-nowrap">    var lat = obj.position.lat();   //获得marker的当前经度坐标</div></div><div class="stx-line-wrap stx-darker" data-line="8"><div class="stx-line-code stx-nowrap">    var lng = obj.position.lng();   //获取marker的当前纬度坐标</div></div><div class="stx-line-wrap stx-lighter" data-line="9"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-darker" data-line="10"><div class="stx-line-code stx-nowrap">google.maps.event.addListener(drawingManager, 'overlaycomplete', setOverlay);</div></div></div></div></pre>
+            </div>
+            <p><strong>第三个难点：怎样修改当前overlay的各种坐标呢？</strong><br><br></p>
+            <p>如果需要手动修改当前坐标，以marker为例<br><br></p>
+            <div class="code">
+                <pre class="codebox" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>3 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">//将修改的 lat,lng重新传入obj即可</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">var myLatlng = new google.maps.LatLng(lat,lng); </div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">obj.setPosition(myLatlng);</div></div></div></div></pre>
+            </div>
+            <p>对于不同overlay有不同的调用方法，只要对当前对象调用对应方法就能设置该对象的不同参数了。<br><br></p>
+            <p><strong>mark一个挺好的API参考网站</strong><a href="http://www.apihome.cn/api/googlemap/" target="_black" style="font-size: 16px;">API之家</a>，
+                这里面可以找到很全的监听事件以及调用方法。<br><br></p>
+
+            <p class="artical-detail-date">2017.04.05<br><br></p>
+
+        </div>
+    </div>
+</div>
+
+<script src="../articleSorce/googleMap/jquery-1.js"></script>
+<script src="../articleSorce/googleMap/syntaxy.js"></script>
+<script src="../articleSorce/googleMap/myjs.js"></script>
+<script>   
+
+
+    $(document).ready(function () {
+        $(".header-box").addClass("fadein");
+        $("#artical-detail p").append("<br/><br/>");
+    });
+</script>
+
+</body></html>

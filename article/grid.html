@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="代远诏，Redspite,web前端,网格算法,图片切换效果,多彩绚丽">
+    <meta name="description" content="网格算法配合CSS3，实现多彩绚丽的图片切换效果 文章详情">
+    <meta name="author" content="代远诏,DYZ">
+    <title>RedSpite » 网格算法配合CSS3，实现多彩绚丽的图片切换效果 文章详情</title>
+
+    <link rel="stylesheet" href="../articleSorce/grid/bootstrap.css">
+    <link rel="stylesheet" href="../articleSorce/grid/syntaxy.css">
+    <link rel="stylesheet" href="../articleSorce/grid/base.css" type="text/css">
+    <link rel="stylesheet" href="../articleSorce/grid/style.css" type="text/css">
+<!-- xiaoyuezhang.com Baidu tongji analytics -->
+<script src="../articleSorce/grid/push.js"></script><script src="../articleSorce/grid/hm.js"></script><script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "//hm.baidu.com/hm.js?f87e415f9d1f6111b1d34c5f96927d9b";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+ <!--[if lte IE 9]>   <script type="text/javascript">      window.location = "http://www.xiaoyuezhang.com/error.html"  </script><![endif]--></head>
+<body>
+<div class="content">
+    <div class=" container">
+        <div id="top">
+            <img src="../articleSorce/grid/top.png" alt="回到顶部">
+        </div>
+        <div class="header-box fadein">
+            <img src="../images/myPhoto.jpg" alt="我的头像">
+        </div>
+        <div class="center">
+            <p class="myid">DYZ</p>
+        </div>
+        <div class="my-sort center">
+            <a href="../index.html">主页</a>
+            <a href="../techBlog.html">列表</a>
+            <a href="../messageBoard.html">留言</a>
+        </div>
+        <div id="artical-detail">
+            <h4>网格算法配合CSS3，实现多彩绚丽的图片切换效果</h4>
+            <p>平时喜欢在网上看看同行的博客，看到一个很好看的图片切换效果，很炫酷，果断学来了~ 哈哈<br><br></p>
+            <p>
+                这是利用4个div显示同一图片的不同区域，css控制各图片位置，进行显示与隐藏，再给图片加上transition时长，就能形成华丽的视觉效果。
+                很多看似炫酷的效果，究其原理还是很简单的。心态放正，不要怕，直接上！
+            <br><br></p>
+            <div class="grid-box">
+                <ul class="pic1">
+                    <li>
+                        <img src="../articleSorce/grid/about1.jpg" alt="图片1">
+                    </li>
+                    <li>
+                        <img src="../articleSorce/grid/about1.jpg" alt="图片2">
+                    </li>
+                    <li>
+                        <img src="../articleSorce/grid/about1.jpg" alt="图片3">
+                    </li>
+                    <li>
+                        <img src="../articleSorce/grid/about1.jpg" alt="图片4">
+                    </li>
+                </ul>
+                <span class="pic2"></span>
+            </div>
+            <h5>HTML:</h5>
+            <div class="code">
+                <pre class="codebox" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>17 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">&lt;div class="grid-box"&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">    &lt;ul class="pic1"&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">        &lt;li&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">            &lt;img src="/image/about1.jpg" alt="图片1"&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">        &lt;/li&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="6"><div class="stx-line-code stx-nowrap">        &lt;li&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="7"><div class="stx-line-code stx-nowrap">            &lt;img src="/image/about1.jpg" alt="图片2"&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="8"><div class="stx-line-code stx-nowrap">        &lt;/li&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="9"><div class="stx-line-code stx-nowrap">        &lt;li&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="10"><div class="stx-line-code stx-nowrap">            &lt;img src="/image/about1.jpg" alt="图片3"&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="11"><div class="stx-line-code stx-nowrap">        &lt;/li&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="12"><div class="stx-line-code stx-nowrap">        &lt;li&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="13"><div class="stx-line-code stx-nowrap">            &lt;img src="/image/about1.jpg" alt="图片4"&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="14"><div class="stx-line-code stx-nowrap">        &lt;/li&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="15"><div class="stx-line-code stx-nowrap">    &lt;/ul&gt;</div></div><div class="stx-line-wrap stx-darker" data-line="16"><div class="stx-line-code stx-nowrap">    &lt;span class="pic2"&gt;&lt;/span&gt;</div></div><div class="stx-line-wrap stx-lighter" data-line="17"><div class="stx-line-code stx-nowrap">&lt;/div&gt;</div></div></div></div></pre>
+            </div>
+            <h5>CSS:</h5>
+            <div class="code">
+                <pre class="codebox" style="margin: 0px; padding: 0px; border: 0px none; text-align: left; display: block;"><div class="stx-wrap"><div class="stx-header stx-clear"><div class="stx-left">Source code</div><div class="stx-right"><button class="stx-error-btn stx-important" type="button" title="Process error">!!!</button> <button class="stx-toggle-btn" type="button" title="Toggle line numbers">☀</button> <span>80 lines</span></div></div><div class="stx-scroller" style="min-height: 100px; max-height: 600px; "><div class="stx-line-wrap stx-lighter" data-line="1"><div class="stx-line-code stx-nowrap">.grid-box{</div></div><div class="stx-line-wrap stx-darker" data-line="2"><div class="stx-line-code stx-nowrap">    position: relative;</div></div><div class="stx-line-wrap stx-lighter" data-line="3"><div class="stx-line-code stx-nowrap">    width: 280px;</div></div><div class="stx-line-wrap stx-darker" data-line="4"><div class="stx-line-code stx-nowrap">    height: 220px;</div></div><div class="stx-line-wrap stx-lighter" data-line="5"><div class="stx-line-code stx-nowrap">    overflow: hidden;</div></div><div class="stx-line-wrap stx-darker" data-line="6"><div class="stx-line-code stx-nowrap">    border-radius: 10px;</div></div><div class="stx-line-wrap stx-lighter" data-line="7"><div class="stx-line-code stx-nowrap">    border: 10px solid #dee5e1;</div></div><div class="stx-line-wrap stx-darker" data-line="8"><div class="stx-line-code stx-nowrap">    margin: 0 auto;</div></div><div class="stx-line-wrap stx-lighter" data-line="9"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-darker" data-line="10"><div class="stx-line-code stx-nowrap">&nbsp;</div></div><div class="stx-line-wrap stx-lighter" data-line="11"><div class="stx-line-code stx-nowrap">.pic1, .pic2{</div></div><div class="stx-line-wrap stx-darker" data-line="12"><div class="stx-line-code stx-nowrap">    font-size: 0;</div></div><div class="stx-line-wrap stx-lighter" data-line="13"><div class="stx-line-code stx-nowrap">    box-sizing: content-box;</div></div><div class="stx-line-wrap stx-darker" data-line="14"><div class="stx-line-code stx-nowrap">    width: 260px;</div></div><div class="stx-line-wrap stx-lighter" data-line="15"><div class="stx-line-code stx-nowrap">    height: 200px;</div></div><div class="stx-line-wrap stx-darker" data-line="16"><div class="stx-line-code stx-nowrap">    position: absolute;</div></div><div class="stx-line-wrap stx-lighter" data-line="17"><div class="stx-line-code stx-nowrap">    top: 0;</div></div><div class="stx-line-wrap stx-darker" data-line="18"><div class="stx-line-code stx-nowrap">    left: 0;</div></div><div class="stx-line-wrap stx-lighter" data-line="19"><div class="stx-line-code stx-nowrap">    cursor: pointer;</div></div><div class="stx-line-wrap stx-darker" data-line="20"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-lighter" data-line="21"><div class="stx-line-code stx-nowrap">.pic1 li{</div></div><div class="stx-line-wrap stx-darker" data-line="22"><div class="stx-line-code stx-nowrap">    width: 50%;</div></div><div class="stx-line-wrap stx-lighter" data-line="23"><div class="stx-line-code stx-nowrap">    height: 100px;</div></div><div class="stx-line-wrap stx-darker" data-line="24"><div class="stx-line-code stx-nowrap">    position: relative;</div></div><div class="stx-line-wrap stx-lighter" data-line="25"><div class="stx-line-code stx-nowrap">    overflow: hidden;</div></div><div class="stx-line-wrap stx-darker" data-line="26"><div class="stx-line-code stx-nowrap">    float: left;</div></div><div class="stx-line-wrap stx-lighter" data-line="27"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-darker" data-line="28"><div class="stx-line-code stx-nowrap">&nbsp;</div></div><div class="stx-line-wrap stx-lighter" data-line="29"><div class="stx-line-code stx-nowrap">.pic1 li &gt; img{</div></div><div class="stx-line-wrap stx-darker" data-line="30"><div class="stx-line-code stx-nowrap">    position: absolute;</div></div><div class="stx-line-wrap stx-lighter" data-line="31"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-darker" data-line="32"><div class="stx-line-code stx-nowrap"> .pic1 li &gt; img,.pic1:hover li &gt; img,.pic2 , .grid-box:hover .pic2{</div></div><div class="stx-line-wrap stx-lighter" data-line="33"><div class="stx-line-code stx-nowrap">    transition: all 0.5s ease;</div></div><div class="stx-line-wrap stx-darker" data-line="34"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-lighter" data-line="35"><div class="stx-line-code stx-nowrap">.pic1 li:nth-child(1) img{</div></div><div class="stx-line-wrap stx-darker" data-line="36"><div class="stx-line-code stx-nowrap">    left:0;</div></div><div class="stx-line-wrap stx-lighter" data-line="37"><div class="stx-line-code stx-nowrap">    top:0;</div></div><div class="stx-line-wrap stx-darker" data-line="38"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-lighter" data-line="39"><div class="stx-line-code stx-nowrap">.pic1 li:nth-child(2) img{</div></div><div class="stx-line-wrap stx-darker" data-line="40"><div class="stx-line-code stx-nowrap">    left: -130px;</div></div><div class="stx-line-wrap stx-lighter" data-line="41"><div class="stx-line-code stx-nowrap">    top: 0;</div></div><div class="stx-line-wrap stx-darker" data-line="42"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-lighter" data-line="43"><div class="stx-line-code stx-nowrap">.pic1 li:nth-child(3) img{</div></div><div class="stx-line-wrap stx-darker" data-line="44"><div class="stx-line-code stx-nowrap">    left:0;</div></div><div class="stx-line-wrap stx-lighter" data-line="45"><div class="stx-line-code stx-nowrap">    top: -100px;</div></div><div class="stx-line-wrap stx-darker" data-line="46"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-lighter" data-line="47"><div class="stx-line-code stx-nowrap">.pic1 li:nth-child(4) img{</div></div><div class="stx-line-wrap stx-darker" data-line="48"><div class="stx-line-code stx-nowrap">    left: -130px;</div></div><div class="stx-line-wrap stx-lighter" data-line="49"><div class="stx-line-code stx-nowrap">    top: -100px;</div></div><div class="stx-line-wrap stx-darker" data-line="50"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-lighter" data-line="51"><div class="stx-line-code stx-nowrap">.pic2{</div></div><div class="stx-line-wrap stx-darker" data-line="52"><div class="stx-line-code stx-nowrap">    transform: scale(1.5);</div></div><div class="stx-line-wrap stx-lighter" data-line="53"><div class="stx-line-code stx-nowrap">    -o-transform: scale(1.5);</div></div><div class="stx-line-wrap stx-darker" data-line="54"><div class="stx-line-code stx-nowrap">    -moz-transform: scale(1.5);</div></div><div class="stx-line-wrap stx-lighter" data-line="55"><div class="stx-line-code stx-nowrap">    background: url("../image/about2.jpg") no-repeat center;</div></div><div class="stx-line-wrap stx-darker" data-line="56"><div class="stx-line-code stx-nowrap">    background-size: cover;</div></div><div class="stx-line-wrap stx-lighter" data-line="57"><div class="stx-line-code stx-nowrap">    z-index: -1;</div></div><div class="stx-line-wrap stx-darker" data-line="58"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-lighter" data-line="59"><div class="stx-line-code stx-nowrap">.grid-box:hover .pic2{</div></div><div class="stx-line-wrap stx-darker" data-line="60"><div class="stx-line-code stx-nowrap">    transform: scale(1);</div></div><div class="stx-line-wrap stx-lighter" data-line="61"><div class="stx-line-code stx-nowrap">    -o-transform: scale(1);</div></div><div class="stx-line-wrap stx-darker" data-line="62"><div class="stx-line-code stx-nowrap">    -moz-transform: scale(1);</div></div><div class="stx-line-wrap stx-lighter" data-line="63"><div class="stx-line-code stx-nowrap">    display: block;</div></div><div class="stx-line-wrap stx-darker" data-line="64"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-lighter" data-line="65"><div class="stx-line-code stx-nowrap">.pic1:hover li:nth-child(1) img{</div></div><div class="stx-line-wrap stx-darker" data-line="66"><div class="stx-line-code stx-nowrap">    /*向下滑*/</div></div><div class="stx-line-wrap stx-lighter" data-line="67"><div class="stx-line-code stx-nowrap">    top:100px;</div></div><div class="stx-line-wrap stx-darker" data-line="68"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-lighter" data-line="69"><div class="stx-line-code stx-nowrap">.pic1:hover li:nth-child(2) img{</div></div><div class="stx-line-wrap stx-darker" data-line="70"><div class="stx-line-code stx-nowrap">    /*向左滑*/</div></div><div class="stx-line-wrap stx-lighter" data-line="71"><div class="stx-line-code stx-nowrap">    left: -260px;</div></div><div class="stx-line-wrap stx-darker" data-line="72"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-lighter" data-line="73"><div class="stx-line-code stx-nowrap">.pic1:hover li:nth-child(3) img{</div></div><div class="stx-line-wrap stx-darker" data-line="74"><div class="stx-line-code stx-nowrap">    /*向右滑*/</div></div><div class="stx-line-wrap stx-lighter" data-line="75"><div class="stx-line-code stx-nowrap">    left: 130px;</div></div><div class="stx-line-wrap stx-darker" data-line="76"><div class="stx-line-code stx-nowrap">}</div></div><div class="stx-line-wrap stx-lighter" data-line="77"><div class="stx-line-code stx-nowrap">.pic1:hover li:nth-child(4) img{</div></div><div class="stx-line-wrap stx-darker" data-line="78"><div class="stx-line-code stx-nowrap">    /*向上滑*/</div></div><div class="stx-line-wrap stx-lighter" data-line="79"><div class="stx-line-code stx-nowrap">    top: -260px;</div></div><div class="stx-line-wrap stx-darker" data-line="80"><div class="stx-line-code stx-nowrap">}</div></div></div></div></pre>
+            </div>
+        </div>
+        <p class="artical-detail-date">2017.02.03</p>
+
+    </div>
+</div>
+<script src="../articleSorce/grid/jquery-1.js"></script>
+<script src="../articleSorce/grid/syntaxy.js"></script>
+<script src="../articleSorce/grid/myjs.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".header-box").addClass("fadein");
+        $("#artical-detail p").append("<br/><br/>");
+    });
+    $(function () {
+
+    });
+</script>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+</body></html>

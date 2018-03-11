@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="DYZ，Redspite,css3动画，动画效果，鼠标悬停">
+    <meta name="description" content=" 各种常见的鼠标悬停css3动画效果 文章详情">
+    <meta name="author" content="代远诏,DYZ">
+    <title>RedSpite » 各种常见的鼠标悬停css3动画效果</title>
+
+    <link rel="stylesheet" href="../articleSorce/animate/bootstrap.css">
+    <link rel="stylesheet" href="../articleSorce/animate/syntaxy.css">
+    <link rel="stylesheet" href="../articleSorce/animate/base.css" type="text/css">
+    <link rel="stylesheet" href="../articleSorce/animate/style.css" type="text/css">
+
+<script src="../articleSorce/animate/push.js"></script><script src="../articleSorce/animate/hm.js"></script><script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "//hm.baidu.com/hm.js?f87e415f9d1f6111b1d34c5f96927d9b";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+ <!--[if lte IE 9]>   <script type="text/javascript">      window.location = "http://www.xiaoyuezhang.com/error.html"  </script><![endif]--></head>
+<body>
+<div class="content">
+    <div class=" container">
+        <div id="top">
+            <img src="../articleSorce/animate/top.png" alt="回到顶部">
+        </div>
+        <div class="header-box fadein">
+            <img src="../images/myPhoto.jpg" alt="我的头像">
+        </div>
+        <div class="center">
+            <p class="myid">DYZ</p>
+        </div>
+        <div class="my-sort center">
+            <a href="../index.html">主页</a>
+            <a href="../techBlog.html">列表</a>
+            <a href="../messageBoard.html">留言</a>
+        </div>
+        <div id="artical-detail">
+            <h4>各种常见的鼠标悬停css3动画效果</h4>
+            <p>平时需要用到的鼠标悬停效果，基本上都是css3的结合。代码就不放了，直接右键看即可。<br><br></p>
+            <div class="anima-box">
+                <ul>
+                    <li class="col-md-4 col-sm-6 marl">
+                        <div style="height: 242.4px;">
+                            <img src="../articleSorce/animate/s2.jpg" alt="配图" class="trans">
+                            <div class="show">
+                                <h2 class="trans">Hello,<strong>World</strong></h2>
+                                <p class="slidep trans">This Is What U Want!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-md-4 col-sm-6 gradli">
+                       <div style="height: 242.4px;">
+                           <img src="../articleSorce/animate/s3.jpg" alt="配图" class="trans">
+                           <div class="show">
+                               <h2 class="trans">Hello,<strong>World</strong></h2>
+                               <p class="slidep trans">This Is What U Want!</p>
+                           </div>
+                           <div class="cover"></div>
+                       </div>
+                    </li>
+                    <li class="col-md-4 col-sm-6 bd-scale scale">
+                        <div style="height: 242.4px;">
+                            <img src="../articleSorce/animate/s4.jpg" alt="配图" class="trans">
+                            <div class="show">
+                                <h2 class="trans">Hello,<strong>World</strong></h2>
+                                <p class="slidep trans">This Is What U Want!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-md-4 col-sm-6 bd-scale scale1 scale">
+                        <div style="height: 242.4px;">
+                            <img src="../articleSorce/animate/s5.jpg" alt="配图" class="trans">
+                            <div class="show">
+                                <h2 class="trans">Hello,<strong>World</strong></h2>
+                                <p class="slidep trans">This Is What U Want!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-md-4 col-sm-6 widthl">
+                        <div style="height: 242.4px;">
+                            <img src="../articleSorce/animate/s8.jpg" alt="配图" class="trans">
+                            <div class="show">
+                                <h2 class="trans">Hello,<strong>World</strong></h2>
+                                <p class="slidep trans">This Is What U Want!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-md-4 col-sm-6 imgup">
+                        <div style="height: 242.4px;">
+                            <img src="../articleSorce/animate/s12.jpg" alt="配图" class="trans">
+                            <div class="show trans">
+                                <h1>Hello,<strong>World</strong></h1>
+                            </div>
+                            <div class="pdiv trans">
+                                <h3>More msgs show here</h3>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="artical-detail-date">2017.03.01</p>
+
+    </div>
+</div>
+<script src="../articleSorce/animate/jquery-1.js"></script>
+<script src="../articleSorce/animate/syntaxy.js"></script>
+<script src="../articleSorce/animate/myjs.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".header-box").addClass("fadein");
+        $("#artical-detail > p").append("<br/><br/>");
+
+        $(".anima-box li").each(function () {
+            $(this).find("img,.show p,.show h2").addClass("trans");
+        });
+        var imgHei = $(".anima-box li>div").width();
+        $(".anima-box li>div").css("height",imgHei*0.8);
+    });
+</script>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+</body></html>
